@@ -18,10 +18,13 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    $posts = Post::all();
+
+    \Illuminate\Support\Facades\DB::listen(function ($query) {
+        logger($query->sql, $query->bindings);
+    });
 
     return view('posts', [
-        'posts' => $posts
+        'posts' => Post::with('category')->get()
     ]);
 });
 
