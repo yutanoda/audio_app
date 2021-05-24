@@ -25,7 +25,7 @@ Route::get('/', function () {
     });
 
     return view('posts', [
-        'posts' => Post::latest()->with(['category', 'author'])->get() //associated in each method
+        'posts' => Post::latest()->get() //associated in each method
     ]);
 });
 
