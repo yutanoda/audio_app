@@ -1,8 +1,3 @@
-
-
-
-
-
 <!doctype html>
 
 <title>Laravel From Scratch Blog</title>
