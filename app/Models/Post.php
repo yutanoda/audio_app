@@ -13,6 +13,14 @@ class Post extends Model
 
     protected $guarded = ['id']; //everything is fillable except id
 
+    public function scopeFilter($query, array $filters) //Post::newQuery()->filter()
+    {
+        $query->when($filters['search'] ?? false, fn ($query, $search) => 
+            $query
+                ->where('title', 'like', '%' . $search . '%')
+                ->orWhere('body', 'like', '%' . $search . '%'));
+    }
+
     public function category()
     {
         return $this->belongsTo(Category::class);
