@@ -9,7 +9,21 @@ use App\Models\Post;
 use App\Models\User;
 use Illuminate\Support\Facades\Route;
 
+Route::get('ping', function () {
+    $mailchimp = new \MailchimpMarketing\ApiClient();
 
+    $mailchimp->setConfig([
+        'apiKey' => config('services.mailchimp.key'),
+        'server' => 'us6'
+    ]);
+
+    $response = $mailchimp->lists->addListMember('a55c4cd99b', [
+        'email_address' => 'y-noda@entaworks.co.jp',
+        'status' => 'subscribed'
+    ]);
+
+    ddd($response);
+});
 
 /*
 |--------------------------------------------------------------------------
