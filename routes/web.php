@@ -9,7 +9,7 @@ use App\Http\Controllers\NewsletterController;
 use App\Models\Category;
 use App\Models\Post;
 use App\Models\User;
-use App\Services\Newsletter;
+use App\Services\MailchimpNewsletter;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Validation\ValidationException;
 
